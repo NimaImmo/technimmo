@@ -11,25 +11,23 @@
     <link rel="stylesheet" href="style.css?v=2">
   </head>
   <body>
-  <header class="topbar">
-    <div class="container bar">
-      <div class="brand">Technimmo</div>
-      <nav class="nav">
-        <a href="#services">Leistungen</a>
-        <a href="#kontakt" class="btn small">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+  <!-- seitlicher Kontakt-Button -->
+  <a class="floating-cta" href="mailto:kontakt@technimmo.de">Kontakt</a>
 
-  <section class="hero">
-    <div class="container hero-inner">
+  <!-- Hero mit Bild/Video-Hintergrund -->
+  <section class="hero hero-media">
+    <!-- Video (optional). Wenn kein Video, einfach diesen <video>-Block löschen -->
+    <video class="bg-video" autoplay muted loop playsinline poster="wasserturm.jpg">
+      <source src="wasserturm.mp4" type="video/mp4">
+    </video>
+
+    <!-- dunkle Overlay, damit Text gut lesbar ist -->
+    <div class="overlay"></div>
+
+    <div class="hero-inner container">
       <h1>Technischer Immobilienservice</h1>
       <p>Besichtigungen, technische Vorabchecks und Übergaben – zuverlässig, flexibel, nah in Mannheim & Umgebung.</p>
-      <!-- E-Mail ODER WhatsApp -->
-      <a href="mailto:DEINE-MAIL@deine-domain.de" class="btn">Jetzt anfragen</a>
-      <!-- Beispiel WhatsApp:
-      <a class="btn" href="https://wa.me/491701234567?text=Hallo%20Technimmo,%20ich%20habe%20eine%20Anfrage.">WhatsApp schreiben</a>
-      -->
+      <a href="mailto:kontakt@technimmo.de" class="btn">Jetzt anfragen</a>
     </div>
   </section>
 
@@ -56,7 +54,7 @@
   <footer class="footer" id="kontakt">
     <div class="container">
       <p>Mannheim · Ludwigshafen · Umgebung</p>
-      <a class="btn subtle" href="mailto:DEINE-MAIL@deine-domain.de">kontakt@technimmo.de</a>
+      <a class="btn subtle" href="mailto:kontakt@technimmo.de">kontakt@technimmo.de</a>
       <p style="margin-top:.75rem;font-size:.9rem;">
         <a href="impressum.html" style="color:inherit;text-decoration:underline;">Impressum</a> ·
         <a href="datenschutz.html" style="color:inherit;text-decoration:underline;">Datenschutz</a>
