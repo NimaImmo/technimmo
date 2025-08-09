@@ -108,6 +108,32 @@ section{ padding:56px 0; }
   section{ padding:42px 0; }
   .floating-cta{ padding:.6rem .6rem; font-size:.95rem; right:6px; }
 }
+
+/* Kontaktformular */
+.contact{ padding: 32px 0 72px; }
+.form-card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 18px 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.grid-2{ display:grid; gap:14px; grid-template-columns: 1fr 1fr; }
+.field{ display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+label{ font-size:.95rem; color:#cfe0ec; }
+input, textarea{
+  background:#0f2232; color:#e6eef6; border:1px solid rgba(255,255,255,.08);
+  border-radius:10px; padding:.8rem .9rem; outline:none;
+}
+input:focus, textarea:focus{ border-color: var(--accent); box-shadow:0 0 0 3px rgba(46,160,255,.18); }
+.consent{ display:flex; gap:.5rem; align-items:flex-start; font-size:.95rem; color:var(--muted); margin:.4rem 0 1rem; }
+.consent a{ color:var(--text); text-decoration:underline; }
+
+@media (max-width:700px){
+  .grid-2{ grid-template-columns: 1fr; }
+}
   
   
   
