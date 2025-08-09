@@ -1,8 +1,75 @@
-body ( 
-font-family: Arial, sans-serif;
-background-color; #f7f7f7;
-color: #333; 
-padding 2rem; 
-max-width: 700px; 
-margin: auto;
-)
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 2rem; 
+  max-width: 700px;
+  margin: auto; 
+}
+/* Layout */ 
+.container {
+  max-width: 900px;
+  margin: 2rem 1.25rem;
+}
+/* Hero-Karte */
+.hero {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2.5rem 1.75rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0,06);
+  margin-bottom: 2rem;
+}
+/* Überschrift */
+h1 {
+  color: #077cc;
+  text-aligen: center;
+  margin: 0 0 0.5rem;
+}
+h2 {
+  margin: 1.5rem 0 0.075rem;
+}
+/* Text */
+p {
+  font-size: 1.15rem;
+  line-hight: 1.6;
+  text-aligen: center;
+  margin: 0 0 1rem;
+}
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.25rem;
+  background: #0077cc;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0,5rem;
+}
+.btn:hover { filter: brightness(0.95); }
+
+/* Leistungen */
+.services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.service ul {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 5px 16px rgba(0,0,0,0,05);
+  margin-bottom: 0.75rem;
+}
+
+/* Footer */
+.footer {
+  text-aligen: center;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 2rem;
+}
+
+  
+  
+  
+
