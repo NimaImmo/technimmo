@@ -23,17 +23,19 @@ body {
   color: var(--text);
 }
 /* Layout */ 
-.container {
-  max-width: 1100px;
-  margin:0 auto;
-  padding:0 1.25rem;
-}
+/* Container & Grundabstände */
+.container{ max-width:1100px; margin:0 auto; padding:0 1.25rem; }
+main{ display:block; } /* hilft alten Browsern */
+section{ margin: 32px 0; } /* Luft zwischen Abschnitten */
+
 /* Hero-Karte */
 .hero{
-  padding:72px 0 56px;
+  padding:72px 0 48px;
   background: radial-gradient(1200px 500px at 20% -10%, rgba(46,160,255,.20), transparent 60%);
 }
 .hero-inner{ text-align:center; max-width:800px; margin:0 auto; }
+.hero h1{ font-size:clamp(28px,5vw,44px); margin:0 0 .5rem; }
+.hero p{ color:var(--muted); font-size:clamp(16px,2.3vw,19px); margin:0 0 1.2rem; }
 
 /* Überschrift */
 h1 {
@@ -64,20 +66,20 @@ p {
 .btn:hover { filter: brightness(0.95); }
 
 /* Leistungen (passt zu HTML: .grid + .card) */
-.services{ padding:56px 0; }
+.services{ padding:8px 0 56px; }
 .grid{
-  display:grid; gap:1rem;
+  display:grid; gap:16px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 .card{
   background: var(--card);
   border: 1px solid rgba(255,255,255,.06);
   border-radius: 14px;
-  padding: 1.25rem 1.1rem;
+  padding: 18px 16px;
   box-shadow: 0 12px 28px rgba(0,0,0,.18);
 }
-.card h3{ margin:.1rem 0 .4rem; }
-.card p{ margin:0; text-align:left; color:var(--muted); }
+.card h3{ margin:.1rem 0 .45rem; }
+.card p{ margin:0; color:var(--muted); text-align:left; }
 
 /* Footer */
 .footer {
