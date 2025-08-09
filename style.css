@@ -48,7 +48,7 @@ section{ padding:56px 0; }
 }
 
 .hero .bg-video {
-  filter: brightness(1.2);
+  filter: brightness(1.4) contrast(1.05);
 }
   
 .hero .hero-inner{ position:relative; z-index:1; }
@@ -132,7 +132,10 @@ input:focus, textarea:focus{ border-color: var(--accent); box-shadow:0 0 0 3px r
 .consent a{ color:var(--text); text-decoration:underline; }
 
 @media (max-width:700px){
-  .grid-2{ grid-template-columns: 1fr; }
+  .floating-cta{
+    font-size:.85rem;
+    padding:.4rem 5rem;
+    }
 }
   
   
