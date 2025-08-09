@@ -55,7 +55,7 @@ section{ padding:56px 0; }
 .hero h1{ color: #e9f1f7; 
          text-shadow: 0 2px 6px rgba(0,0,0,0.4); 
          font-size:clamp(28px,5vw,48px); margin:0 0 .6rem; }
-.hero p{ color:#cfe0ec; font-size:clamp(16px,2.3vw,20px); margin:0 0 1.2rem; }
+.hero p{ color:#cfe0ec; !important; font-size:clamp(16px,2.3vw,20px); margin:0 0 1.2rem; }
 
 /* Button */
 .btn{
