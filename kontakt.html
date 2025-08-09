@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anfrage – Technimmo</title>
   <meta name="description" content="Kontaktformular – Technimmo: Anfrage für Besichtigungsservice, Vorabcheck oder Übergabe.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <!-- Version-Bump gegen Cache -->
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -15,17 +16,19 @@
     <div class="container">
       <h1 style="text-align:center; margin-bottom:1rem;">Anfrage senden</h1>
 
-      <form class="form-card" action="https://formspree.io/f/mvgqdgzo" method="POST">
+      <!-- EmailJS: Wir senden per JS, KEIN action/method -->
+      <form id="contact-form" class="form-card" onsubmit="sendMail(event)">
         <!-- Spam-Honeypot -->
-        <input type="text" name="_gotcha" style="display:none">
+        <input type="text" name="website" style="display:none">
 
         <div class="grid-2">
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" required placeholder="Vor- und Nachname">
           </div>
+
           <div class="field">
-            <label for="email">E‑Mail</label>
+            <label for="email">E-Mail</label>
             <input id="email" name="email" type="email" required placeholder="name@mail.de">
           </div>
         </div>
@@ -36,23 +39,72 @@
         </div>
 
         <div class="field">
-          <label for="msg">Nachricht</label>
-          <textarea id="msg" name="message" rows="6" required placeholder="Worum geht’s?"></textarea>
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" rows="6" required placeholder="Worum geht’s?"></textarea>
         </div>
 
-        <!-- Betreff + Redirect nach Erfolg -->
-        <input type="hidden" name="_subject" value="Neue Anfrage über Technimmo">
-        <input type="hidden" name="_next" value="https://nimaimmo.github.io/technimmo/danke.html">
-
         <label class="consent">
-          <input type="checkbox" required>
+          <input id="consent" type="checkbox" required>
           Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzhinweise</a> gelesen und stimme der Verarbeitung zu.
+          <small>
+            Mit Absenden willige ich ein, dass meine Angaben zur Bearbeitung der Anfrage gespeichert und verarbeitet werden.
+            Der Versand der E-Mail erfolgt über EmailJS (EU-Hosting möglich). Details in der Datenschutzerklärung.
+          </small>
         </label>
 
-        <button class="btn" type="submit">Abschicken</button>
+        <button class="btn" type="submit" id="submit-btn">Abschicken</button>
+        <p id="form-status" class="form-status" aria-live="polite"></p>
       </form>
     </div>
   </section>
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // === Trage hier deine Keys ein ===
+    const EMAILJS_PUBLIC_KEY  = "public_n8pfD7hugrQgl9Dq8";   // Account → API Keys → Public key
+    const EMAILJS_SERVICE_ID  = "service_ea6giwi";       // steht bereits in deinem Dashboard
+    const EMAILJS_TEMPLATE_ID = "template_35gtqjh";     // die Template-ID, die du eben angelegt hast
+
+    // Init
+    (function(){ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
+
+    // Handle submit
+    async function sendMail(e){
+      e.preventDefault();
+      const form = e.target;
+
+      // Honeypot: wenn befüllt → Bot
+      if (form.website && form.website.value) return;
+
+      const submitBtn = document.getElementById('submit-btn');
+      const statusEl  = document.getElementById('form-status');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Senden…';
+      statusEl.textContent = '';
+
+      // Variablen müssen zu deinem Template passen: {{name}}, {{email}}, {{phone}}, {{message}}, optional {{page}}, {{timestamp}}
+      const params = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value,
+        page: location.href,
+        timestamp: new Date().toLocaleString()
+      };
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+        // Erfolg → Danke-Seite
+        window.location.href = 'danke.html';
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Leider ist etwas schiefgegangen. Bitte versuch es später erneut oder schreib direkt an kontakt@technimmo.de.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Abschicken';
+      }
+    }
+  </script>
 </body>
 </html>
