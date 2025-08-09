@@ -131,11 +131,10 @@ input:focus, textarea:focus{ border-color: var(--accent); box-shadow:0 0 0 3px r
 .consent{ display:flex; gap:.5rem; align-items:flex-start; font-size:.95rem; color:var(--muted); margin:.4rem 0 1rem; }
 .consent a{ color:var(--text); text-decoration:underline; }
 
-@media (max-width:700px){
-  .floating-cta{
-    font-size:.85rem;
-    padding:.4rem 5rem;
-    }
+@media (max-width: 600px) {
+  .floating-cta {
+    display: none; /* ganz ausblenden auf Handy */
+  }
 }
   
   
